@@ -1,0 +1,116 @@
+.user-container {
+  max-width: 400px;
+  /* width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;  */
+  /* align-items: center;  */
+  margin: 0 auto;
+  padding: 20px;
+  /* box-sizing: border-box; */
+  font-family: Arial, sans-serif;
+
+
+  h2 {
+    text-align: center;
+    color: #333;
+  }
+
+  .login-form {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+    .form-group {
+      margin-bottom: 15px;
+
+      .login-input {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 16px;
+
+        &.error {
+          border-color: #e74c3c;
+        }
+      }
+
+      .error-message {
+        color: #e74c3c;
+        font-size: 12px;
+        margin-top: 5px;
+      }
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 10px;
+      background: #27ae60;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+
+      &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      &:hover:not(:disabled) {
+        background: #219a52;
+      }
+    }
+  }
+
+  .logged-in-section {
+    background: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h3 {
+      color: #27ae60;
+    }
+
+    p {
+      margin: 10px 0;
+      text-align: left;
+    }
+
+    .logout-btn {
+      width: 100%;
+      padding: 10px;
+      background: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+
+      &:hover {
+        background: #c0392b;
+      }
+    }
+    .todo-btn {
+       width: 100%;
+      padding: 10px;
+      background: #2304ec;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      font-size: 16px;
+      cursor: pointer;
+      margin-top: 15px;
+
+      &:hover {
+        background: #3d2bc6;
+      }
+    }
+  }
+}

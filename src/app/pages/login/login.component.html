@@ -1,0 +1,33 @@
+<div class="user-container">
+  <h2>User Login</h2>
+
+  <div *ngIf="loggedInUser" class="logged-in-section">
+    <h3>Welcome, {{ loggedInUser.name }}!</h3>
+    <p><strong>Username:</strong> {{ loggedInUser.username }}</p>
+    <p><strong>Email:</strong> {{ loggedInUser.email }}</p>
+    <p><strong>Phone:</strong> {{ loggedInUser.phone }}</p>
+    <button (click)="goToTodo()" class="todo-btn">Go to Todo List</button>
+    <button (click)="logout()" class="logout-btn">Logout</button>
+  </div>
+
+  <form *ngIf="!loggedInUser" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+    <div class="form-group">
+      <input
+        type="text"
+        formControlName="credential"
+        placeholder="Enter ID, username, or email..."
+        class="login-input"
+        [class.error]="loginForm.get('credential')?.invalid && loginForm.get('credential')?.touched"
+      />
+      <div *ngIf="loginForm.get('credential')?.invalid && loginForm.get('credential')?.touched" class="error-message">
+        Credential is required.
+      </div>
+    </div>
+
+    <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+
+    <button type="submit" [disabled]="loading || loginForm.invalid" class="submit-btn">
+      {{ loading ? 'Logging in...' : 'Login' }}
+    </button>
+  </form>
+</div>
