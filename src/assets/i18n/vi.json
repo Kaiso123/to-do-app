@@ -1,0 +1,31 @@
+{
+  "USER": {
+    "LOGIN": {
+      "TITLE": "Đăng nhập",
+      "WELCOME": "Xin chào, {{name}}!",
+      "PLACEHOLDER": "Nhập ID, tên người dùng hoặc email",
+      "SUBMIT": "Tiếp theo",
+      "USERNAME": "Tên người dùng",
+      "EMAIL": "Email",
+      "PHONE": "Số điện thoại",
+      "GO_TO_TODO": "Đi đến danh sách công việc",
+      "LOGOUT": "Đăng xuất",
+      "ERROR": {
+        "USER_NOT_FOUND_ID": "Không tìm thấy người dùng với ID trên."
+      }
+    }
+  },
+  "TODO":{
+    "TITLE": "Danh sách công việc",
+    "ENTERTODO": "Nhập công việc...",
+    "COMPLETE": "Hoàn thành",
+    "ADDTODO": "Thêm",
+    "UPDATE": "Cập nhật",
+    "EDIT": "Chỉnh sửa",
+    "DELETE": "Xóa",
+    "ERROR" :{
+      "REQUIRED": "Tiêu đề là bắt buộc và phải có ít nhất 3 ký tự.",
+      "NOTFOUNDTODO": "Chưa có công việc. Hãy thêm công việc mới!"
+    }
+  }
+}

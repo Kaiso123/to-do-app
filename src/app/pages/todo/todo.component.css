@@ -4,6 +4,26 @@
   padding: 20px;
   font-family: Arial, sans-serif;
 
+  .header-section {
+    align-items: center;
+    margin-bottom: 20px;
+ 
+    .todo-title {
+      min-width: 200px;  
+    }
+
+    .lang-section {
+      display: flex;
+      justify-content: flex-end;  
+      align-items: center;
+      margin-top: 10px;  
+
+      .lang-dropdown {
+        min-width: 120px;
+      }
+    }
+  }
+
   h2 {
     text-align: center;
     color: #333;

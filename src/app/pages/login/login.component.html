@@ -1,13 +1,24 @@
 <div class="user-container">
-  <h2>User Login</h2>
+  <div class="header-section">
+    <h2 class="login-title">{{ 'USER.LOGIN.TITLE' | translate }}</h2>
+    <p-dropdown
+      [options]="languages"
+      [(ngModel)]="selectedLanguage"
+      (onChange)="switchLang($event.value)"
+      placeholder="Language"
+      class="lang-dropdown"
+      styleClass="p-dropdown-sm"
+      [showClear]="false"
+    ></p-dropdown>
+  </div>
 
   <div *ngIf="loggedInUser" class="logged-in-section">
-    <h3>Welcome, {{ loggedInUser.name }}!</h3>
-    <p><strong>Username:</strong> {{ loggedInUser.username }}</p>
-    <p><strong>Email:</strong> {{ loggedInUser.email }}</p>
-    <p><strong>Phone:</strong> {{ loggedInUser.phone }}</p>
-    <button (click)="goToTodo()" class="todo-btn">Go to Todo List</button>
-    <button (click)="logout()" class="logout-btn">Logout</button>
+    <h3>{{ 'USER.LOGIN.WELCOME' | translate: {name: loggedInUser.name} }}</h3>
+    <p><strong>{{ 'USER.LOGIN.USERNAME' | translate }}:</strong> {{ loggedInUser.username }}</p>
+    <p><strong>{{ 'USER.LOGIN.EMAIL' | translate }}:</strong> {{ loggedInUser.email }}</p>
+    <p><strong>{{ 'USER.LOGIN.PHONE' | translate }}:</strong> {{ loggedInUser.phone }}</p>
+    <button (click)="goToTodo()" class="todo-btn">{{ 'USER.LOGIN.GO_TO_TODO' | translate }}</button>
+    <button (click)="logout()" class="logout-btn">{{ 'USER.LOGIN.LOGOUT' | translate }}</button>
   </div>
 
   <form *ngIf="!loggedInUser" [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
@@ -15,19 +26,19 @@
       <input
         type="text"
         formControlName="credential"
-        placeholder="Enter ID, username, or email..."
+        [placeholder]="'USER.LOGIN.PLACEHOLDER' | translate"
         class="login-input"
         [class.error]="loginForm.get('credential')?.invalid && loginForm.get('credential')?.touched"
       />
       <div *ngIf="loginForm.get('credential')?.invalid && loginForm.get('credential')?.touched" class="error-message">
-        Credential is required.
+        {{ 'USER.LOGIN.REQUIRED' | translate }}
       </div>
     </div>
 
     <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
 
     <button type="submit" [disabled]="loading || loginForm.invalid" class="submit-btn">
-      {{ loading ? 'Logging in...' : 'Login' }}
+      {{ submitLabel }}
     </button>
   </form>
 </div>

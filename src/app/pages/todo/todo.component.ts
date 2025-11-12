@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms'; 
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms'; 
 import { CommonModule } from '@angular/common';
 import { TodoSerivce, TodoApiResponse } from '../../service/todo.service';
+import { DropdownModule } from "primeng/dropdown";;
+import { InputTextModule } from "primeng/inputtext";
+import { TranslateModule, TranslateService } from "@ngx-translate/core";
+import { KEY_STORE } from '../../config/constants';
+import { PaginatorModule } from 'primeng/paginator';
 
 @Component({
   selector: 'app-todo',
   standalone: true,
   imports: [
     ReactiveFormsModule,
-    CommonModule
+    CommonModule,
+    TranslateModule,
+    DropdownModule,
+    InputTextModule,
+    FormsModule,
+    PaginatorModule
   ],
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.css']
@@ -24,10 +34,17 @@ export class TodoComponent implements OnInit {
   currentPage = 1;
   itemsPerPage = 9;
   totalPages = 0;
+  selectedLanguage = localStorage.getItem(KEY_STORE.LOCALIZATION) || 'en';
+  languages = [
+        { label: "ພາສາລາວ", value: "lo", flag: "lo-flag-icon.svg" },
+        { label: "Tiếng Việt", value: "vi", flag: "vi-flag-icon.svg" },
+        { label: "English", value: "en", flag: "us-flag-icon.svg" },
+    ];
 
   constructor(
     private todoService: TodoSerivce,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private translate: TranslateService,
   ) {
     this.todoForm = this.fb.group({
       title: ['', [Validators.required, Validators.minLength(3)]],
@@ -54,6 +71,12 @@ export class TodoComponent implements OnInit {
     });
   }
 
+  switchLang(lang: string): void {
+    this.translate.use(lang);
+    localStorage.setItem(KEY_STORE.LOCALIZATION, lang);
+    
+  }
+
   get paginatedTodos(): TodoApiResponse[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
     const endIndex = startIndex + this.itemsPerPage;
@@ -67,17 +90,12 @@ export class TodoComponent implements OnInit {
     }
   }
 
-  previousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-    }
+  onPageChange(event: any): void {
+    this.currentPage = Math.floor(event.first / event.rows) + 1;
+    this.itemsPerPage = event.rows;
+    this.updatePagination();
   }
 
-  nextPage(): void {
-    if (this.currentPage < this.totalPages) {
-      this.currentPage++;
-    }
-  }
 
   onSubmit(): void {
     if (this.todoForm.invalid) {
@@ -135,6 +153,7 @@ export class TodoComponent implements OnInit {
       this.todoService.delete(id).subscribe({
         next: () => {
           this.todos = this.todos.filter(t => t.id !== id);
+          this.updatePagination();
           this.loading = false;
         },
         error: (err) => {

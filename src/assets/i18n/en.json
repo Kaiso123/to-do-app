@@ -1,0 +1,31 @@
+{
+  "USER": {
+    "LOGIN": {
+      "TITLE": "Login",
+      "WELCOME": "Welcome, {{name}}!",
+      "PLACEHOLDER": "Enter ID, username or email",
+      "SUBMIT": "Log In",
+      "USERNAME": "Username",
+      "EMAIL": "Email",
+      "PHONE": "Phone number",
+      "GO_TO_TODO": "Go to To-Do List",
+      "LOGOUT": "Log Out",
+      "ERROR": {
+        "USER_NOT_FOUND_ID": "User not found with this ID."
+      }
+    }
+  },
+  "TODO":{
+    "TITLE": "To Do List",
+    "ENTERTODO": "Enter a task's title...",
+    "COMPLETE": "Complete",
+    "ADDTODO": "Add",
+    "UPDATE": "Update",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "ERROR": {
+      "REQUIRED": "Title is required and must be at least 3 characters long.",
+      "NOTFOUNDTODO": "No todos found. Please add a new todo!"
+    }
+  }
+}

@@ -11,6 +11,26 @@
   /* box-sizing: border-box; */
   font-family: Arial, sans-serif;
 
+  .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .login-title {
+      margin: 0;
+      text-align: left;  
+      flex: 1; 
+    }
+
+    .lang-dropdown {
+      min-width: 120px;  
+      .p-dropdown {
+        width: 100%;
+      }
+    }
+  }
+
 
   h2 {
     text-align: center;
