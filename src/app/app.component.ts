@@ -21,12 +21,12 @@ import { CommonModule } from "@angular/common";
     CommonModule
   ],
   templateUrl: "./app.component.html",
-  styleUrl: "./app.component.scss",
+  styleUrl: "./app.component.css",
   providers: [DialogService],
 })
 export class AppComponent implements OnInit {
     isAppReady = false;
-
+    title = 'to-do-app';
     constructor(
         private translateService: TranslateService,
         private spinner: NgxSpinnerService

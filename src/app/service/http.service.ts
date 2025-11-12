@@ -4,9 +4,6 @@ import { Injectable } from "@angular/core";
 import { RequestHttp } from "../common/models/resquest-http.model";
 import { Observable } from "rxjs";
 import { HTTP_METHOD } from "../config/constants";
-import { Data } from "@angular/router";
-import { ObjectEncodingOptions } from "fs";
-import { METHODS, request } from "http";
 
 export class DataResquest {
     function: string;
